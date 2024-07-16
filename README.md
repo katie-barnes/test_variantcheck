@@ -34,6 +34,10 @@ Example useages:
 ./neuron23_snp_check.sh sample1.vcf                                        
 ```                                                             
 
+To try with the test data, clone this folder and run:
+```
+./neuron23_snp_check.sh test_data/*.vcf           
+```
 
 
 
