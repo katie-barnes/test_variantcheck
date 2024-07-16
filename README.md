@@ -1,6 +1,6 @@
 ################################################################################
 #                                                                              #
-#                          SNP CHECK SCRIPT                                    #
+#                       Neuron23 variant checker                               #
 #                                                                              #
 # This script processes one or multiple VCF files to check the presence and    #
 # quality of specified SNPs. The results are written to text files with the    #
@@ -17,3 +17,20 @@
 #   ./neuron23_snp_check.sh sample1.vcf                                        #
 #                                                                              #
 ################################################################################
+
+Input:
+- One or more VCF files
+
+Output:
+- A text file per VCF file listing each variant queried and if it was
+present within the VCF file and if it was listed as PASS under the VCF FILTER
+column. For example:
+
+SNP	PRESENT_IN_VCF	QC_PASS
+rs34805604	PRESENT	PASS
+rs33939927	PRESENT	FAIL
+rs34995376	PRESENT	PASS
+rs35801418	PRESENT	PASS
+rs34637584	PRESENT	PASS
+rs35870237	MISSING	-
+rs34778348	PRESENT	PASS

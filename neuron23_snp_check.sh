@@ -2,7 +2,7 @@
 
 ################################################################################
 #                                                                              #
-#                          SNP CHECK SCRIPT                                    #
+#                      Neuron23 variant checker                                #
 #                                                                              #
 # This script processes one or multiple VCF files to check the presence and    #
 # quality of specified SNPs. The results are written to text files with the    #
@@ -55,8 +55,8 @@ for vcf_file in "$@"; do
   # Define the output file name
   output_file="${output_dir}/${base_name}_snpcheck.txt"
 
-  # Write the header to the output file
-  echo -e "SNP\tPRESENT_IN_VCF\tQC_PASS" > "$output_file"
+  # Write the base name and header to the output file
+  echo -e "# ${base_name}\nSNP\tPRESENT_IN_VCF\tQC_PASS" > "$output_file"
 
   # Initialize flags
   missing_variant_flag=0
