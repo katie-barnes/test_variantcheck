@@ -1,4 +1,4 @@
-# Neuron23 variant checker                               
+# Variant checker                               
 
 This script processes one or more VCF files to check the presence and quality of specified SNPs. The results are written to text files with the suffix "*_snpcheck.txt". If a directory is specified as the last argument, the results will be written to that directory. Otherwise, the results will be written to the current directory.
 
@@ -24,19 +24,19 @@ rs34778348	PRESENT	PASS
 
 Usage:                                                                       
 ```
-./neuron23_snp_check.sh <input1.vcf> [input2.vcf] [...] [output_directory]
+./snp_check.sh <input1.vcf> [input2.vcf] [...] [output_directory]
 ```
 
 Example useages:
 ```
-./neuron23_snp_check.sh sample1.vcf sample2.vcf mydirectory                
-./neuron23_snp_check.sh *.vcf mydirectory                                  
-./neuron23_snp_check.sh sample1.vcf                                        
+./snp_check.sh sample1.vcf sample2.vcf mydirectory                
+./snp_check.sh *.vcf mydirectory                                  
+./snp_check.sh sample1.vcf                                        
 ```                                                             
 
 To try with the test data, clone this folder and run:
 ```
-./neuron23_snp_check.sh test_data/*           
+./snp_check.sh test_data/*           
 ```
 
 
