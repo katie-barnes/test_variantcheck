@@ -36,7 +36,7 @@ Example useages:
 
 To try with the test data, clone this folder and run:
 ```
-./neuron23_snp_check.sh test_data/*.vcf           
+./neuron23_snp_check.sh test_data/*           
 ```
 
 
