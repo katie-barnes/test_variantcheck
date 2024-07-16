@@ -51,6 +51,7 @@ declare -a snps=(
 for vcf_file in "$@"; do
   # Extract the base name of the input file (without extension)
   base_name=$(basename "$vcf_file" .vcf)
+  base_name=$(basename "$base_name" .vcf.gz)
 
   # Define the output file name
   output_file="${output_dir}/${base_name}_snpcheck.txt"
@@ -64,8 +65,13 @@ for vcf_file in "$@"; do
 
   # Check each SNP
   for snp in "${snps[@]}"; do
-    # Use grep to find the SNP in the VCF file
-    snp_present=$(grep -w "$snp" "$vcf_file")
+    if [[ "$vcf_file" == *.vcf.gz ]]; then
+      # Use zgrep to find the SNP in the gzipped VCF file
+      snp_present=$(zgrep -w "$snp" "$vcf_file")
+    else
+      # Use grep to find the SNP in the VCF file
+      snp_present=$(grep -w "$snp" "$vcf_file")
+    fi
     
     if [ -n "$snp_present" ]; then
       # Check if the FILTER field is PASS
