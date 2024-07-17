@@ -5,35 +5,54 @@
 #                      Variant checker                                         #
 #                                                                              #
 # This script processes one or multiple VCF files to check the presence and    #
-# quality of specified SNPs. The results are written to text files with the    #
-# suffix "_snpcheck.txt". If a directory is specified as the last argument,    #
-# the results will be written to that directory. Otherwise, the results will   #
-# be written to the current directory.                                         #
+# quality of specified SNPs. The results are written to a single text file     #
+# containing all samples with each SNP as a row and each sample as a column.   #
 #                                                                              #
 # Usage:                                                                       #
-#   ./snp_check.sh <input1.vcf> [input2.vcf] [...] [output_directory]          #
+#   ./snp_check.sh <input1.vcf> [input2.vcf] [...] [-o output_directory] [-b batch_name] #
 #                                                                              #
 # Example:                                                                     #
-#   ./snp_check.sh sample1.vcf sample2.vcf mydirectory                         #
-#   ./snp_check.sh *.vcf mydirectory                                           #
+#   ./snp_check.sh sample1.vcf sample2.vcf -o mydirectory -b mybatch           #
+#   ./snp_check.sh *.vcf -o mydirectory                                        #
 #   ./snp_check.sh sample1.vcf                                                 #
 #                                                                              #
 ################################################################################
 
-# Check if at least one VCF file was provided
-if [ $# -lt 1 ]; then
-  echo "Usage: $0 <input1.vcf> [input2.vcf] [...] [output_directory]"
-  exit 1
-fi
+set -e
+trap 'echo "An error occurred. Exiting..." >&2; exit 1' ERR
 
-# Check if the last argument is a directory
-last_arg=${!#}
-if [ -d "$last_arg" ]; then
-  output_dir=$last_arg
-  # Remove the last argument from the list of VCF files
-  set -- "${@:1:$(($#-1))}"
-else
-  output_dir="."
+LOG_FILE="snp_check.log"
+exec > >(tee -i "$LOG_FILE") 2>&1
+
+# Default values
+output_dir="."
+batch_name="batch"
+
+# Parse command line arguments
+vcf_files=()
+while [[ $# -gt 0 ]]; do
+  case $1 in
+    -o)
+      output_dir="$2"
+      shift
+      shift
+      ;;
+    -b)
+      batch_name="$2"
+      shift
+      shift
+      ;;
+    *)
+      vcf_files+=("$1")
+      shift
+      ;;
+  esac
+done
+
+# Check if at least one VCF file was provided
+if [ ${#vcf_files[@]} -lt 1 ]; then
+  echo "Usage: $0 <input1.vcf> [input2.vcf] [...] [-o output_directory] [-b batch_name]"
+  exit 1
 fi
 
 # Array of SNPs to check
@@ -47,49 +66,80 @@ declare -a snps=(
   "rs34778348"
 )
 
-# Loop through each VCF file provided as an argument
-for vcf_file in "$@"; do
+# Initialize summary file with header
+summary_file="${output_dir}/${batch_name}_summary.txt"
+header="SNP"
+for vcf_file in "${vcf_files[@]}"; do
+  sample_name=$(basename "$vcf_file" .vcf)
+  sample_name=$(basename "$sample_name" .vcf.gz)
+  header+="\t$sample_name"
+done
+echo -e "$header" > "$summary_file"
+
+# Loop through each SNP
+for snp in "${snps[@]}"; do
+  # Initialize the row with the SNP name
+  row="$snp"
+
+  # Loop through each VCF file provided as an argument
+  for vcf_file in "${vcf_files[@]}"; do
+    if [[ "$vcf_file" == *.vcf.gz ]]; then
+      # Use zgrep to find the SNP in the gzipped VCF file
+      snp_present=$(zgrep -w "$snp" "$vcf_file" || true)
+    else
+      # Use grep to find the SNP in the VCF file
+      snp_present=$(grep -w "$snp" "$vcf_file" || true)
+    fi
+    
+    if [ -n "$snp_present" ]; then
+      # Check if the FILTER field is PASS
+      snp_pass=$(echo "$snp_present" | grep -w "PASS" || true)
+      
+      if [ -n "$snp_pass" ]; then
+        row+="\tY/Y"
+      else
+        row+="\tY/X"
+      fi
+    else
+      row+="\tX/X"
+    fi
+  done
+
+  # Append the row to the summary file
+  echo -e "$row" >> "$summary_file"
+done
+
+# Array to hold the names of files that pass the criteria
+declare -a valid_vcfs=()
+
+# Loop through each VCF file provided as an argument again for sorting and indexing
+for vcf_file in "${vcf_files[@]}"; do
   # Extract the base name of the input file (without extension)
   base_name=$(basename "$vcf_file" .vcf)
   base_name=$(basename "$base_name" .vcf.gz)
-
-  # Define the output file name
-  output_file="${output_dir}/${base_name}_snpcheck.txt"
-
-  # Write the base name and header to the output file
-  echo -e "# ${base_name}\nSNP\tPRESENT_IN_VCF\tQC_PASS" > "$output_file"
 
   # Initialize flags
   missing_variant_flag=0
   failed_qc_flag=0
 
-  # Check each SNP
+  # Check if the file is valid (i.e., contains all SNPs and passes QC)
+  valid_file=true
+
   for snp in "${snps[@]}"; do
     if [[ "$vcf_file" == *.vcf.gz ]]; then
-      # Use zgrep to find the SNP in the gzipped VCF file
-      snp_present=$(zgrep -w "$snp" "$vcf_file")
+      snp_present=$(zgrep -w "$snp" "$vcf_file" || true)
     else
-      # Use grep to find the SNP in the VCF file
-      snp_present=$(grep -w "$snp" "$vcf_file")
+      snp_present=$(grep -w "$snp" "$vcf_file" || true)
     fi
-    
-    if [ -n "$snp_present" ]; then
-      # Check if the FILTER field is PASS
-      snp_pass=$(echo "$snp_present" | grep -w "PASS")
-      
-      if [ -n "$snp_pass" ]; then
-        echo -e "$snp\tPRESENT\tPASS" >> "$output_file"
-      else
-        echo -e "$snp\tPRESENT\tFAIL" >> "$output_file"
-        failed_qc_flag=1
-      fi
-    else
-      echo -e "$snp\tMISSING\t-" >> "$output_file"
+
+    if [ -z "$snp_present" ]; then
       missing_variant_flag=1
+      valid_file=false
+    elif ! echo "$snp_present" | grep -q "PASS"; then
+      failed_qc_flag=1
+      valid_file=false
     fi
   done
-
-  echo -e "\n${base_name}: Results have been written to $output_file"
 
   # Display appropriate messages
   if [ $missing_variant_flag -eq 1 ]; then
@@ -99,4 +149,37 @@ for vcf_file in "$@"; do
     echo "WARNING: ${base_name} has at least one QC-failed variant"
   fi
 
+  if [ "$valid_file" = true ]; then
+    valid_vcfs+=("$vcf_file")
+  fi
 done
+
+# If there are valid VCF files, sort, index, and merge them
+if [ ${#valid_vcfs[@]} -gt 0 ]; then
+  sorted_vcfs=()
+
+  for vcf_file in "${valid_vcfs[@]}"; do
+    # Sort the VCF file
+    sorted_file="${vcf_file%.vcf*}.sorted.vcf.gz"
+    bcftools sort "$vcf_file" -Oz -o "$sorted_file"
+    
+    # Index the sorted VCF file
+    bcftools index -t "$sorted_file"
+    
+    # Add the sorted file to the list
+    sorted_vcfs+=("$sorted_file")
+  done
+
+  # Merge the sorted VCF files
+  merged_file="${output_dir}/${batch_name}.vcf.gz"
+  bcftools merge "${sorted_vcfs[@]}" -Oz -o "$merged_file"
+  
+  echo "Merged VCF file created at $merged_file"
+
+  # Remove sorted files
+  for sorted_file in "${sorted_vcfs[@]}"; do
+    rm -f "$sorted_file" "${sorted_file}.tbi"
+  done
+else
+  echo "No VCF files passed the SNP check criteria."
+fi

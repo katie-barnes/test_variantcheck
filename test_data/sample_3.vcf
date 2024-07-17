@@ -1,5 +1,14 @@
 ##fileformat=VCFv4.0
-#CHROM	POS	ID	REF	ALT	QUAL	FILTER	INFO	FORMAT	SAMPLE1
+##FILTER=<ID=PASS,Description="All filters passed">
+##bcftools_viewVersion=1.20+htslib-1.20
+##bcftools_viewCommand=view -h sample_1.vcf; Date=Wed Jul 17 10:49:13 2024
+##contig=<ID=1,length=249250621>
+##contig=<ID=2,length=243199373>
+##contig=<ID=3,length=198022430>
+##contig=<ID=12,length=133851895>
+##FORMAT=<ID=GT,Number=1,Type=String,Description="Genotype">
+##fileformat=VCFv4.0
+#CHROM	POS	ID	REF	ALT	QUAL	FILTER	INFO	FORMAT	SAMPLE3
 12	40299125	rs34805604	A	G	.	PASS	.	GT	0/0
 12	40310434	rs33939927	C	G,T	.	PASS	.	GT	0/0
 12	40321114	rs35801418	A	C,G	.	PASS	.	GT	0/0
