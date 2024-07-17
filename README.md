@@ -10,7 +10,7 @@ Arguments:
 -b: Batch name, will determine name of multisample VCF and output text file
 
 Output:
-- A multisample VCF containing all samples for which the specified SNPs are present
+- A multisample compressed VCF containing all samples for which the specified SNPs are present
 and of sufficient quality (FILTER column equal to PASS).
 - A text file with each variant queried as a row and each sample as a column. Each
 entry is either Y/Y (SNP present and QC PASS), Y/X (SNP present but not passed QC)
