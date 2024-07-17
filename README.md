@@ -17,7 +17,6 @@ entry is either Y/Y (SNP present and QC PASS), Y/X (SNP present but not passed Q
 or X/X (SNP missing). For example:
 
 ```
-# sample_1
 SNP	sample_1	sample_2	sample_3	sample_4	sample_5
 rs34805604	Y/Y	Y/Y	Y/Y	Y/Y	Y/Y
 rs33939927	Y/Y	Y/X	Y/Y	Y/Y	Y/Y
