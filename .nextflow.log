@@ -1,0 +1,122 @@
+Jul-18 17:26:00.667 [main] DEBUG nextflow.cli.Launcher - $> nextflow run snp_check.nf
+Jul-18 17:26:00.761 [main] DEBUG nextflow.cli.CmdRun - N E X T F L O W  ~  version 24.04.2
+Jul-18 17:26:00.781 [main] DEBUG nextflow.plugin.PluginsFacade - Setting up plugin manager > mode=prod; embedded=false; plugins-dir=/Users/katiebarnes/.nextflow/plugins; core-plugins: nf-amazon@2.5.2,nf-azure@1.6.0,nf-cloudcache@0.4.1,nf-codecommit@0.2.0,nf-console@1.1.3,nf-ga4gh@1.3.0,nf-google@1.13.2,nf-tower@1.9.1,nf-wave@1.4.2
+Jul-18 17:26:00.786 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Enabled plugins: []
+Jul-18 17:26:00.787 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Disabled plugins: []
+Jul-18 17:26:00.788 [main] INFO  org.pf4j.DefaultPluginManager - PF4J version 3.10.0 in 'deployment' mode
+Jul-18 17:26:00.795 [main] INFO  org.pf4j.AbstractPluginManager - No plugins
+Jul-18 17:26:00.805 [main] DEBUG nextflow.config.ConfigBuilder - Found config local: /Users/katiebarnes/Desktop/test_variantcheck/nextflow.config
+Jul-18 17:26:00.806 [main] DEBUG nextflow.config.ConfigBuilder - Parsing config file: /Users/katiebarnes/Desktop/test_variantcheck/nextflow.config
+Jul-18 17:26:00.819 [main] DEBUG n.secret.LocalSecretsProvider - Secrets store: /Users/katiebarnes/.nextflow/secrets/store.json
+Jul-18 17:26:00.820 [main] DEBUG nextflow.secret.SecretsLoader - Discovered secrets providers: [nextflow.secret.LocalSecretsProvider@7144655b] - activable => nextflow.secret.LocalSecretsProvider@7144655b
+Jul-18 17:26:00.823 [main] DEBUG nextflow.config.ConfigBuilder - Applying config profile: `standard`
+Jul-18 17:26:01.035 [main] DEBUG nextflow.cli.CmdRun - Applied DSL=2 from script declaration
+Jul-18 17:26:01.049 [main] DEBUG nextflow.cli.CmdRun - Launching `snp_check.nf` [goofy_ramanujan] DSL2 - revision: 638a4882b7
+Jul-18 17:26:01.050 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins default=[]
+Jul-18 17:26:01.051 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins resolved requirement=[]
+Jul-18 17:26:01.080 [main] DEBUG nextflow.Session - Session UUID: f2318740-dc2d-4db7-bd02-8c13c7e69861
+Jul-18 17:26:01.080 [main] DEBUG nextflow.Session - Run name: goofy_ramanujan
+Jul-18 17:26:01.080 [main] DEBUG nextflow.Session - Executor pool size: 8
+Jul-18 17:26:01.085 [main] DEBUG nextflow.file.FilePorter - File porter settings maxRetries=3; maxTransfers=50; pollTimeout=null
+Jul-18 17:26:01.087 [main] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'FileTransfer' minSize=10; maxSize=24; workQueue=LinkedBlockingQueue[10000]; allowCoreThreadTimeout=false
+Jul-18 17:26:01.106 [main] DEBUG nextflow.cli.CmdRun - 
+  Version: 24.04.2 build 5914
+  Created: 29-05-2024 06:19 UTC (07:19 BST)
+  System: Mac OS X 14.5
+  Runtime: Groovy 4.0.21 on OpenJDK 64-Bit Server VM 17.0.10+7
+  Encoding: UTF-8 (UTF-8)
+  Process: 43152@Katies-Laptop.lan [192.168.1.222]
+  CPUs: 8 - Mem: 8 GB (48.6 MB) - Swap: 3 GB (821.3 MB)
+Jul-18 17:26:01.113 [main] DEBUG nextflow.Session - Work-dir: /Users/katiebarnes/Desktop/test_variantcheck/work [Mac OS X]
+Jul-18 17:26:01.113 [main] DEBUG nextflow.Session - Script base path does not exist or is not a directory: /Users/katiebarnes/Desktop/test_variantcheck/bin
+Jul-18 17:26:01.118 [main] DEBUG nextflow.executor.ExecutorFactory - Extension executors providers=[]
+Jul-18 17:26:01.123 [main] DEBUG nextflow.Session - Observer factory: DefaultObserverFactory
+Jul-18 17:26:01.133 [main] DEBUG nextflow.cache.CacheFactory - Using Nextflow cache factory: nextflow.cache.DefaultCacheFactory
+Jul-18 17:26:01.138 [main] DEBUG nextflow.util.CustomThreadPool - Creating default thread pool > poolSize: 9; maxThreads: 1000
+Jul-18 17:26:01.174 [main] DEBUG nextflow.Session - Session start
+Jul-18 17:26:01.376 [main] DEBUG nextflow.script.ScriptRunner - > Launching execution
+Jul-18 17:26:01.456 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jul-18 17:26:01.456 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jul-18 17:26:01.458 [main] DEBUG nextflow.executor.Executor - [warm up] executor > local
+Jul-18 17:26:01.461 [main] DEBUG n.processor.LocalPollingMonitor - Creating local task monitor for executor 'local' > cpus=8; memory=8 GB; capacity=8; pollInterval=100ms; dumpInterval=5m
+Jul-18 17:26:01.462 [main] DEBUG n.processor.TaskPollingMonitor - >>> barrier register (monitor: local)
+Jul-18 17:26:01.486 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jul-18 17:26:01.486 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jul-18 17:26:01.496 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jul-18 17:26:01.497 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jul-18 17:26:01.498 [main] DEBUG nextflow.Session - Workflow process names [dsl2]: checkSNPs, mergeVCFs, sortIndexVCFs
+Jul-18 17:26:01.499 [main] DEBUG nextflow.Session - Igniting dataflow network (4)
+Jul-18 17:26:01.501 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > checkSNPs
+Jul-18 17:26:01.502 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > sortIndexVCFs
+Jul-18 17:26:01.502 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > mergeVCFs
+Jul-18 17:26:01.502 [main] DEBUG nextflow.script.ScriptRunner - Parsed script files:
+  Script_91d64b90e0f4e289: /Users/katiebarnes/Desktop/test_variantcheck/snp_check.nf
+Jul-18 17:26:01.502 [main] DEBUG nextflow.script.ScriptRunner - > Awaiting termination 
+Jul-18 17:26:01.502 [main] DEBUG nextflow.Session - Session await
+Jul-18 17:26:01.575 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Jul-18 17:26:01.576 [Task submitter] INFO  nextflow.Session - [89/99a5e1] Submitted process > checkSNPs (3)
+Jul-18 17:26:01.579 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Jul-18 17:26:01.579 [Task submitter] INFO  nextflow.Session - [db/328b97] Submitted process > checkSNPs (2)
+Jul-18 17:26:01.581 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Jul-18 17:26:01.581 [Task submitter] INFO  nextflow.Session - [a8/97f489] Submitted process > checkSNPs (5)
+Jul-18 17:26:01.584 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Jul-18 17:26:01.585 [Task submitter] INFO  nextflow.Session - [ff/680bda] Submitted process > checkSNPs (4)
+Jul-18 17:26:01.587 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Jul-18 17:26:01.587 [Task submitter] INFO  nextflow.Session - [5a/33ff6d] Submitted process > checkSNPs (1)
+Jul-18 17:26:01.640 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 3; name: checkSNPs (3); status: COMPLETED; exit: 0; error: -; workDir: /Users/katiebarnes/Desktop/test_variantcheck/work/89/99a5e17907f27b1ccd997542068dcf]
+Jul-18 17:26:01.640 [Task monitor] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'TaskFinalizer' minSize=10; maxSize=24; workQueue=LinkedBlockingQueue[10000]; allowCoreThreadTimeout=false
+Jul-18 17:26:01.641 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 2; name: checkSNPs (2); status: COMPLETED; exit: 0; error: -; workDir: /Users/katiebarnes/Desktop/test_variantcheck/work/db/328b97ccfbe1c3552e285d0b402090]
+Jul-18 17:26:01.642 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 5; name: checkSNPs (5); status: COMPLETED; exit: 0; error: -; workDir: /Users/katiebarnes/Desktop/test_variantcheck/work/a8/97f489b555de23e4f79d1424649845]
+Jul-18 17:26:01.643 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 4; name: checkSNPs (4); status: COMPLETED; exit: 0; error: -; workDir: /Users/katiebarnes/Desktop/test_variantcheck/work/ff/680bda24ba3cc9c0189b63d321737b]
+Jul-18 17:26:01.643 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 1; name: checkSNPs (1); status: COMPLETED; exit: 0; error: -; workDir: /Users/katiebarnes/Desktop/test_variantcheck/work/5a/33ff6d37c87c381a2e5141df95b445]
+Jul-18 17:26:01.657 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Jul-18 17:26:01.657 [Task submitter] INFO  nextflow.Session - [cb/27b64d] Submitted process > sortIndexVCFs (3)
+Jul-18 17:26:01.659 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Jul-18 17:26:01.659 [Task submitter] INFO  nextflow.Session - [b1/6932c7] Submitted process > sortIndexVCFs (2)
+Jul-18 17:26:01.661 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Jul-18 17:26:01.662 [Task submitter] INFO  nextflow.Session - [32/6a8644] Submitted process > sortIndexVCFs (5)
+Jul-18 17:26:01.664 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Jul-18 17:26:01.665 [Task submitter] INFO  nextflow.Session - [6a/ec3001] Submitted process > sortIndexVCFs (1)
+Jul-18 17:26:01.667 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Jul-18 17:26:01.667 [Task submitter] INFO  nextflow.Session - [da/c60ade] Submitted process > sortIndexVCFs (4)
+Jul-18 17:26:01.684 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 10; name: sortIndexVCFs (5); status: COMPLETED; exit: 0; error: -; workDir: /Users/katiebarnes/Desktop/test_variantcheck/work/32/6a86447a3e2dd70f8e74c6d6ef0b99]
+Jul-18 17:26:01.689 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 8; name: sortIndexVCFs (3); status: COMPLETED; exit: 0; error: -; workDir: /Users/katiebarnes/Desktop/test_variantcheck/work/cb/27b64df8eafb819aeb017a2d0a1f45]
+Jul-18 17:26:01.690 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 9; name: sortIndexVCFs (4); status: COMPLETED; exit: 0; error: -; workDir: /Users/katiebarnes/Desktop/test_variantcheck/work/da/c60ade503c76bd4ad969036ced0a0a]
+Jul-18 17:26:01.698 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 6; name: sortIndexVCFs (1); status: COMPLETED; exit: 0; error: -; workDir: /Users/katiebarnes/Desktop/test_variantcheck/work/6a/ec300181d5ef1c6ff4f63baf6f74f1]
+Jul-18 17:26:01.698 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 7; name: sortIndexVCFs (2); status: COMPLETED; exit: 0; error: -; workDir: /Users/katiebarnes/Desktop/test_variantcheck/work/b1/6932c75f3d721e89ab501d39222308]
+Jul-18 17:26:01.704 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Jul-18 17:26:01.704 [Task submitter] INFO  nextflow.Session - [1d/1d65b3] Submitted process > mergeVCFs
+Jul-18 17:26:01.726 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 11; name: mergeVCFs; status: COMPLETED; exit: 255; error: -; workDir: /Users/katiebarnes/Desktop/test_variantcheck/work/1d/1d65b38865309b8d05ec0e011f0d55]
+Jul-18 17:26:01.728 [TaskFinalizer-5] DEBUG nextflow.processor.TaskProcessor - Handling unexpected condition for
+  task: name=mergeVCFs; work-dir=/Users/katiebarnes/Desktop/test_variantcheck/work/1d/1d65b38865309b8d05ec0e011f0d55
+  error [nextflow.exception.ProcessFailedException]: Process `mergeVCFs` terminated with an error exit status (255)
+Jul-18 17:26:01.735 [TaskFinalizer-5] ERROR nextflow.processor.TaskProcessor - Error executing process > 'mergeVCFs'
+
+Caused by:
+  Process `mergeVCFs` terminated with an error exit status (255)
+
+
+Command executed:
+
+  bcftools merge /Users/katiebarnes/Desktop/test_variantcheck/work/32/6a86447a3e2dd70f8e74c6d6ef0b99/sample_3.sorted.vcf.gz /Users/katiebarnes/Desktop/test_variantcheck/work/da/c60ade503c76bd4ad969036ced0a0a/sample_4.vcf.sorted.vcf.gz /Users/katiebarnes/Desktop/test_variantcheck/work/cb/27b64df8eafb819aeb017a2d0a1f45/sample_2.sorted.vcf.gz /Users/katiebarnes/Desktop/test_variantcheck/work/6a/ec300181d5ef1c6ff4f63baf6f74f1/sample_5.sorted.vcf.gz /Users/katiebarnes/Desktop/test_variantcheck/work/b1/6932c75f3d721e89ab501d39222308/sample_1.sorted.vcf.gz -Oz -o merged.vcf.gz
+
+Command exit status:
+  255
+
+Command output:
+  (empty)
+
+Command error:
+  Failed to open /Users/katiebarnes/Desktop/test_variantcheck/work/32/6a86447a3e2dd70f8e74c6d6ef0b99/sample_3.sorted.vcf.gz: unknown file type
+
+Work dir:
+  /Users/katiebarnes/Desktop/test_variantcheck/work/1d/1d65b38865309b8d05ec0e011f0d55
+
+Tip: you can try to figure out what's wrong by changing to the process work dir and showing the script file named `.command.sh`
+Jul-18 17:26:01.736 [main] DEBUG nextflow.Session - Session await > all processes finished
+Jul-18 17:26:01.736 [TaskFinalizer-5] DEBUG nextflow.Session - Session aborted -- Cause: Process `mergeVCFs` terminated with an error exit status (255)
+Jul-18 17:26:01.742 [main] DEBUG nextflow.Session - Session await > all barriers passed
+Jul-18 17:26:01.742 [Task monitor] DEBUG n.processor.TaskPollingMonitor - <<< barrier arrives (monitor: local) - terminating tasks monitor poll loop
+Jul-18 17:26:01.745 [main] DEBUG n.trace.WorkflowStatsObserver - Workflow completed > WorkflowStats[succeededCount=10; failedCount=1; ignoredCount=0; cachedCount=0; pendingCount=0; submittedCount=0; runningCount=0; retriesCount=0; abortedCount=0; succeedDuration=41ms; failedDuration=13ms; cachedDuration=0ms;loadCpus=0; loadMemory=0; peakRunning=5; peakCpus=5; peakMemory=0; ]
+Jul-18 17:26:01.946 [main] DEBUG nextflow.cache.CacheDB - Closing CacheDB done
+Jul-18 17:26:01.957 [main] DEBUG nextflow.script.ScriptRunner - > Execution complete -- Goodbye

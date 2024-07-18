@@ -1,0 +1,99 @@
+Jul-18 17:22:15.494 [main] DEBUG nextflow.cli.Launcher - $> nextflow run snp_check.nf
+Jul-18 17:22:15.582 [main] DEBUG nextflow.cli.CmdRun - N E X T F L O W  ~  version 24.04.2
+Jul-18 17:22:15.594 [main] DEBUG nextflow.plugin.PluginsFacade - Setting up plugin manager > mode=prod; embedded=false; plugins-dir=/Users/katiebarnes/.nextflow/plugins; core-plugins: nf-amazon@2.5.2,nf-azure@1.6.0,nf-cloudcache@0.4.1,nf-codecommit@0.2.0,nf-console@1.1.3,nf-ga4gh@1.3.0,nf-google@1.13.2,nf-tower@1.9.1,nf-wave@1.4.2
+Jul-18 17:22:15.599 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Enabled plugins: []
+Jul-18 17:22:15.600 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Disabled plugins: []
+Jul-18 17:22:15.601 [main] INFO  org.pf4j.DefaultPluginManager - PF4J version 3.10.0 in 'deployment' mode
+Jul-18 17:22:15.606 [main] INFO  org.pf4j.AbstractPluginManager - No plugins
+Jul-18 17:22:15.616 [main] DEBUG nextflow.config.ConfigBuilder - Found config local: /Users/katiebarnes/Desktop/test_variantcheck/nextflow.config
+Jul-18 17:22:15.617 [main] DEBUG nextflow.config.ConfigBuilder - Parsing config file: /Users/katiebarnes/Desktop/test_variantcheck/nextflow.config
+Jul-18 17:22:15.632 [main] DEBUG n.secret.LocalSecretsProvider - Secrets store: /Users/katiebarnes/.nextflow/secrets/store.json
+Jul-18 17:22:15.634 [main] DEBUG nextflow.secret.SecretsLoader - Discovered secrets providers: [nextflow.secret.LocalSecretsProvider@2257fadf] - activable => nextflow.secret.LocalSecretsProvider@2257fadf
+Jul-18 17:22:15.636 [main] DEBUG nextflow.config.ConfigBuilder - Applying config profile: `standard`
+Jul-18 17:22:15.843 [main] DEBUG nextflow.cli.CmdRun - Applied DSL=2 from script declaration
+Jul-18 17:22:15.856 [main] DEBUG nextflow.cli.CmdRun - Launching `snp_check.nf` [awesome_brattain] DSL2 - revision: 2d01be0376
+Jul-18 17:22:15.857 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins default=[]
+Jul-18 17:22:15.857 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins resolved requirement=[]
+Jul-18 17:22:15.885 [main] DEBUG nextflow.Session - Session UUID: 902073ce-ed69-442e-a582-01e5fc8c1226
+Jul-18 17:22:15.885 [main] DEBUG nextflow.Session - Run name: awesome_brattain
+Jul-18 17:22:15.885 [main] DEBUG nextflow.Session - Executor pool size: 8
+Jul-18 17:22:15.889 [main] DEBUG nextflow.file.FilePorter - File porter settings maxRetries=3; maxTransfers=50; pollTimeout=null
+Jul-18 17:22:15.891 [main] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'FileTransfer' minSize=10; maxSize=24; workQueue=LinkedBlockingQueue[10000]; allowCoreThreadTimeout=false
+Jul-18 17:22:15.912 [main] DEBUG nextflow.cli.CmdRun - 
+  Version: 24.04.2 build 5914
+  Created: 29-05-2024 06:19 UTC (07:19 BST)
+  System: Mac OS X 14.5
+  Runtime: Groovy 4.0.21 on OpenJDK 64-Bit Server VM 17.0.10+7
+  Encoding: UTF-8 (UTF-8)
+  Process: 41972@Katies-Laptop.lan [192.168.1.222]
+  CPUs: 8 - Mem: 8 GB (65.6 MB) - Swap: 3 GB (805.3 MB)
+Jul-18 17:22:15.919 [main] DEBUG nextflow.Session - Work-dir: /Users/katiebarnes/Desktop/test_variantcheck/work [Mac OS X]
+Jul-18 17:22:15.919 [main] DEBUG nextflow.Session - Script base path does not exist or is not a directory: /Users/katiebarnes/Desktop/test_variantcheck/bin
+Jul-18 17:22:15.924 [main] DEBUG nextflow.executor.ExecutorFactory - Extension executors providers=[]
+Jul-18 17:22:15.929 [main] DEBUG nextflow.Session - Observer factory: DefaultObserverFactory
+Jul-18 17:22:15.939 [main] DEBUG nextflow.cache.CacheFactory - Using Nextflow cache factory: nextflow.cache.DefaultCacheFactory
+Jul-18 17:22:15.944 [main] DEBUG nextflow.util.CustomThreadPool - Creating default thread pool > poolSize: 9; maxThreads: 1000
+Jul-18 17:22:15.979 [main] DEBUG nextflow.Session - Session start
+Jul-18 17:22:16.170 [main] DEBUG nextflow.script.ScriptRunner - > Launching execution
+Jul-18 17:22:16.242 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jul-18 17:22:16.242 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jul-18 17:22:16.244 [main] DEBUG nextflow.executor.Executor - [warm up] executor > local
+Jul-18 17:22:16.247 [main] DEBUG n.processor.LocalPollingMonitor - Creating local task monitor for executor 'local' > cpus=8; memory=8 GB; capacity=8; pollInterval=100ms; dumpInterval=5m
+Jul-18 17:22:16.248 [main] DEBUG n.processor.TaskPollingMonitor - >>> barrier register (monitor: local)
+Jul-18 17:22:16.272 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jul-18 17:22:16.272 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jul-18 17:22:16.281 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jul-18 17:22:16.281 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jul-18 17:22:16.282 [main] DEBUG nextflow.Session - Workflow process names [dsl2]: checkSNPs, mergeVCFs, sortIndexVCFs
+Jul-18 17:22:16.282 [main] DEBUG nextflow.Session - Igniting dataflow network (4)
+Jul-18 17:22:16.289 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > checkSNPs
+Jul-18 17:22:16.289 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > sortIndexVCFs
+Jul-18 17:22:16.289 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > mergeVCFs
+Jul-18 17:22:16.290 [main] DEBUG nextflow.script.ScriptRunner - Parsed script files:
+  Script_735e9d20ca8f28a5: /Users/katiebarnes/Desktop/test_variantcheck/snp_check.nf
+Jul-18 17:22:16.290 [main] DEBUG nextflow.script.ScriptRunner - > Awaiting termination 
+Jul-18 17:22:16.290 [main] DEBUG nextflow.Session - Session await
+Jul-18 17:22:16.358 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Jul-18 17:22:16.359 [Task submitter] INFO  nextflow.Session - [d6/5916ae] Submitted process > checkSNPs (1)
+Jul-18 17:22:16.362 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Jul-18 17:22:16.362 [Task submitter] INFO  nextflow.Session - [74/e75de0] Submitted process > checkSNPs (2)
+Jul-18 17:22:16.406 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 1; name: checkSNPs (1); status: COMPLETED; exit: 0; error: -; workDir: /Users/katiebarnes/Desktop/test_variantcheck/work/d6/5916aec126a4767d7cf6aa05f61956]
+Jul-18 17:22:16.406 [Task monitor] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'TaskFinalizer' minSize=10; maxSize=24; workQueue=LinkedBlockingQueue[10000]; allowCoreThreadTimeout=false
+Jul-18 17:22:16.408 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 2; name: checkSNPs (2); status: COMPLETED; exit: 0; error: -; workDir: /Users/katiebarnes/Desktop/test_variantcheck/work/74/e75de08a742a8677265686154a87fe]
+Jul-18 17:22:16.423 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Jul-18 17:22:16.424 [Task submitter] INFO  nextflow.Session - [c9/feedf5] Submitted process > sortIndexVCFs (1)
+Jul-18 17:22:16.426 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Jul-18 17:22:16.426 [Task submitter] INFO  nextflow.Session - [ad/40a0ee] Submitted process > sortIndexVCFs (2)
+Jul-18 17:22:16.451 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 3; name: sortIndexVCFs (1); status: COMPLETED; exit: 0; error: -; workDir: /Users/katiebarnes/Desktop/test_variantcheck/work/c9/feedf5ea5cb1eb39819c7e3c07d4c4]
+Jul-18 17:22:16.451 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 4; name: sortIndexVCFs (2); status: COMPLETED; exit: 0; error: -; workDir: /Users/katiebarnes/Desktop/test_variantcheck/work/ad/40a0ee4bd70735054bbd9fd1512e14]
+Jul-18 17:22:16.468 [Task submitter] DEBUG nextflow.processor.TaskProcessor - Handling unexpected condition for
+  task: name=mergeVCFs; work-dir=/Users/katiebarnes/Desktop/test_variantcheck/work/7e/2adc3978d75b7f322b51aa8c628ef7
+  error [nextflow.exception.IllegalFileException]: File `/Users/katiebarnes/Desktop/test_variantcheck/output/merged.vcf.gz` is outside the scope of the process work directory: /Users/katiebarnes/Desktop/test_variantcheck/work/7e/2adc3978d75b7f322b51aa8c628ef7
+Jul-18 17:22:16.475 [Task submitter] DEBUG nextflow.processor.TaskRun - Unable to dump error of process 'null' -- Cause: java.nio.file.NoSuchFileException: /Users/katiebarnes/Desktop/test_variantcheck/work/7e/2adc3978d75b7f322b51aa8c628ef7/.command.log
+Jul-18 17:22:16.476 [Task submitter] ERROR nextflow.processor.TaskProcessor - Error executing process > 'mergeVCFs'
+
+Caused by:
+  File `/Users/katiebarnes/Desktop/test_variantcheck/output/merged.vcf.gz` is outside the scope of the process work directory: /Users/katiebarnes/Desktop/test_variantcheck/work/7e/2adc3978d75b7f322b51aa8c628ef7
+
+
+Command executed:
+
+  bcftools merge /Users/katiebarnes/Desktop/test_variantcheck/work/c9/feedf5ea5cb1eb39819c7e3c07d4c4/sample_5.sorted.vcf.gz /Users/katiebarnes/Desktop/test_variantcheck/work/ad/40a0ee4bd70735054bbd9fd1512e14/sample_1.sorted.vcf.gz -Oz -o /Users/katiebarnes/Desktop/test_variantcheck/output/merged.vcf.gz
+
+Command exit status:
+  -
+
+Command output:
+  (empty)
+
+Work dir:
+  /Users/katiebarnes/Desktop/test_variantcheck/work/7e/2adc3978d75b7f322b51aa8c628ef7
+
+Tip: view the complete command output by changing to the process work dir and entering the command `cat .command.out`
+Jul-18 17:22:16.476 [Task submitter] DEBUG nextflow.Session - Session aborted -- Cause: File `/Users/katiebarnes/Desktop/test_variantcheck/output/merged.vcf.gz` is outside the scope of the process work directory: /Users/katiebarnes/Desktop/test_variantcheck/work/7e/2adc3978d75b7f322b51aa8c628ef7
+Jul-18 17:22:16.482 [main] DEBUG nextflow.Session - Session await > all processes finished
+Jul-18 17:22:16.482 [Task monitor] DEBUG n.processor.TaskPollingMonitor - <<< barrier arrives (monitor: local) - terminating tasks monitor poll loop
+Jul-18 17:22:16.482 [main] DEBUG nextflow.Session - Session await > all barriers passed
+Jul-18 17:22:16.485 [main] DEBUG n.trace.WorkflowStatsObserver - Workflow completed > WorkflowStats[succeededCount=4; failedCount=1; ignoredCount=0; cachedCount=0; pendingCount=1; submittedCount=0; runningCount=-1; retriesCount=0; abortedCount=0; succeedDuration=3ms; failedDuration=0ms; cachedDuration=0ms;loadCpus=-1; loadMemory=0; peakRunning=2; peakCpus=2; peakMemory=0; ]
+Jul-18 17:22:16.687 [main] DEBUG nextflow.cache.CacheDB - Closing CacheDB done
+Jul-18 17:22:16.699 [main] DEBUG nextflow.script.ScriptRunner - > Execution complete -- Goodbye
