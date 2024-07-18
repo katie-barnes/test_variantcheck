@@ -9,16 +9,13 @@ workflow {
         .splitCsv(header: false, sep: ',')
         .map { row -> file(row[0], checkIfExists: true) }
 
-    // Run checkSNPs for each VCF file
+    // Check if SNPs are present and passing QC in each VCF file
     snp_check = checkSNPs(vcf_files, file(params.snps))
 
-    // Run sortIndexVCFs for each checked VCF file
+    // If SNPs are present and have passed QC, sort and index VCFs for merging 
     sorted_vcfs = sortIndexVCFs(snp_check)
 
-    test = sorted_vcfs.collect()
-    test.view()
-
-    // Merge the sorted VCF files
+    // Merge the sorted and indexed VCF files
     merged_vcf = mergeVCFs(sorted_vcfs.collect())
 }
 
@@ -54,7 +51,6 @@ process sortIndexVCFs {
     else
         echo "${vcf_file} did not pass checks"
         touch ${vcf_file.baseName}.sorted.vcf.gz
-        touch ${vcf_file.baseName}.sorted.vcf.gz.tbi
     fi
     """
 }
@@ -70,6 +66,6 @@ process mergeVCFs {
 
     script:
     """
-    bcftools merge ${sorted_vcfs.join(' ')} -Oz -o merged.vcf.gz
+    python3 /Users/katiebarnes/Desktop/test_variantcheck/filter_and_merge.py ${sorted_vcfs.join(" ")} merged.vcf.gz
     """
 }

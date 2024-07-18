@@ -36,11 +36,11 @@ for snp in snps:
 # Output results
 if missing_snps:
     for snp in missing_snps:
-        print(f"{snp} is not present in {vcf_file}")
+        print(f"{vcf_file}: {snp} is not present")
 
 if failed_snps:
     for snp in failed_snps:
-        print(f"{snp} has failed QC in {vcf_file}")
+        print(f"{vcf_file}: {snp} has failed QC")
 
 if not missing_snps and not failed_snps:
-    print("PASS")
+    print(f"{vcf_file}: PASS")
