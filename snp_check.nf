@@ -13,7 +13,7 @@ workflow {
     snp_check = checkSNPs(vcf_files, file(params.snps))
 
     // If SNPs are present and have passed QC, sort and index VCFs for merging 
-    sorted_vcfs = sortIndexVCFs(snp_check.vcf_list)
+    sorted_vcfs = sortIndexVCFs(snp_check)
 
     // Merge the sorted and indexed VCF files
     merged_vcf = mergeVCFs(sorted_vcfs.collect())
@@ -25,10 +25,9 @@ process checkSNPs {
     file snps_file
 
     output:
-    tuple path(vcf_file), file("${vcf_file}.check"), emit: vcf_list
-    file("${vcf_file}.check"), emit: check_list
+    tuple path(vcf_file), file("${vcf_file}.check")
 
-    //publishDir "${params.output}", mode: 'copy'
+    publishDir "${params.output}", mode: 'copy'
 
     script:
     """
